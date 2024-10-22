@@ -1,0 +1,77 @@
+.animal-details {
+  background-color: #c17a48;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.detail-item label {
+  font-weight: bold;
+}
+.animal {
+  display: flex; /* Usar flexbox para alinear los elementos horizontalmente */
+  align-items: center; /* Alinear verticalmente el contenido al centro */
+  width: 100%;
+}
+
+.animal-url {
+  width: 600px; /* Fijar el tamaño de la imagen */
+}
+
+.animal-name {
+  margin-left: -120px; 
+}
+
+.animal .animal-name input {
+  font-size: 20px;
+  width: 100%;
+  background: none;
+  border: none;
+  color: black;
+}
+
+.detail-item select, .detail-item textarea {
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #dab897;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-button, .edit-button {
+  background-color: #7b2f0e;
+  color: #d4c4b4;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.edit-button:hover, .back-button:hover {
+  background-color: #360408;
+}

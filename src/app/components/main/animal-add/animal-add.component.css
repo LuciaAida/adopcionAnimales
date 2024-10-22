@@ -1,0 +1,111 @@
+/*#360408  marron oscuro (letras)
+#7b2f0e  marron menos oscuro
+#c17a48 marron 
+#dab897  marron clarito
+#efe7dd   gris*/ 
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: 'Arial', sans-serif;
+}
+
+.animal-add {
+  max-width: 600px; 
+  margin: 20px auto; 
+  text-align: center; 
+  padding: 20px; /* Espacio interno */
+  background-color: #c17a48; 
+  border-radius: 12px;
+  display: flex; /* Usar flexbox para el contenedor */
+  flex-direction: column; /* Colocar los elementos en columna */
+  align-items: center; /* Centrar horizontalmente los elementos */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+.input-container label {
+  margin-bottom: 5px;
+  font-weight: bold; /* Negrita para las etiquetas */
+}
+
+.input-container {
+  margin-bottom: 8px; /* Espacio entre los campos */
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-container input, .input-container select, .input-container textarea { /*mismo estilo en el nombre, el tipo y la descripcion*/
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #dab897;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.input-container textarea {
+  height: 100px; 
+  resize: none; /* Permitir que el usuario no ajuste el tamaño */
+  overflow-y: auto; /* Mostrar barra de desplazamiento vertical si el texto es largo */
+}
+
+.add-button {
+  background-color: #7b2f0e; 
+  color: #dab897; 
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Cambiar cursor a mano al pasar */
+  border-radius: 5px; 
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #360408; /* Color de fondo al pasar el ratón */
+  transform: scale(0.9);
+}
+
+.modal {
+  display: flex; /* Usar flexbox para centrar el modal */
+  position: fixed; /* Fijar el modal en la pantalla */
+  z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Altura completa */
+  overflow: auto; /* Agregar barra de desplazamiento si es necesario */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+}
+
+.modal-content {
+  background-color: #804b35; /* Fondo blanco para el contenido del modal */
+  margin: auto; /* Centrando el modal */
+  padding: 20px; /* Espacio interno */
+  border: 1px solid #501b04; /* Borde */
+  width: 300px; /* Ancho del modal */
+  height: 50px;
+  font-size: 20px;
+  border-radius: 10px; /* Bordes redondeados */
+  color: white;
+}
+
+.close {
+  color: #501b04; /* Color del botón de cierre */
+  float: right; /* Alinear el botón de cierre a la derecha */
+  font-size: 28px; /* Tamaño del texto */
+}
+
+.close:hover,
+.close:focus {
+  color: black; /* Cambiar color al pasar el ratón */
+  text-decoration: none; /* Sin subrayado */
+  cursor: pointer; /* Cambiar cursor a mano al pasar */
+}
+

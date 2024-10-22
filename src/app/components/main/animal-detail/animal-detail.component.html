@@ -1,0 +1,47 @@
+<div class="animal-details">
+
+  <div class="animal">
+    <div class="animal-url">
+      <img [src]="animal.url" alt="Vista Previa de la Imagen" style="width: 40%;margin: 0 auto;text-align: center;"/>
+    </div>
+    <div class="animal-name">
+      <input [(ngModel)]="animal.name" [disabled]="!isEditing" />
+    </div>
+  </div>
+
+  
+  <div class="detail-item">
+    <label>Tipo:</label>
+    <select [(ngModel)]="animal.type" [disabled]="!isEditing">
+        <option *ngFor="let type of tiposAnimal" [value]="type">{{ type }}</option>
+    </select>
+</div>
+
+<div class="detail-item">
+    <label>Sexo:</label>
+    <select [(ngModel)]="animal.sexo" [disabled]="!isEditing">
+        <option *ngFor="let sexo of tiposSexo" [value]="sexo">{{ sexo }}</option>
+    </select>
+</div>
+
+<div class="detail-item">
+  <label>Tamaño:</label>
+  <select [(ngModel)]="animal.tamanio" [disabled]="!isEditing">
+      <option *ngFor="let tamanio of tiposTamanio" [value]="tamanio">{{ tamanio }}</option>
+  </select>
+</div>
+
+  
+  <div class="detail-item">
+    <label>Descripción:</label>
+    <textarea [(ngModel)]="animal.description" [disabled]="!isEditing"></textarea>
+  </div>
+  
+  <div class="button-container">
+    <button class="back-button" routerLink="/list">Volver a la lista</button>
+    <button class="edit-button" (click)="toggleEdit()">
+      {{ isEditing ? 'Guardar' : 'Editar todo' }}
+    </button>
+  </div>
+</div>
+  

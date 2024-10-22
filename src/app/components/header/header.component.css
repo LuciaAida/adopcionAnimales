@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Color de fondo suave */
+    text-align: center;
+  }
+  
+  /* Estilos para la navbar */
+  .navbar {
+    display: flex;
+    justify-content: flex-start; /* Alinea los botones a la izquierda */
+    padding: 15px;
+    background-color: #c17a48; /* Color de fondo de la navbar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para la navbar */
+  }
+  
+  /* Estilos para los enlaces en la navbar */
+  .navbar a {
+    text-decoration: none;
+    color: #360408; /* Color del texto */
+    padding: 10px 20px;
+    margin-right: 20px; /* Espacio entre botones */
+    background-color: #dab897; /* Fondo de los botones */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover efecto en los botones de la navbar */
+  .navbar a:hover {
+    background-color: #a4b27d; /* Cambio de color al pasar el ratón */
+  }
+  
+  /* Estilos para el título */
+  h1 {
+    text-align: center;
+    font-family: monospace;
+    color: #360408; /* Color del texto del título */
+    margin-top: 30px;
+    font-size: 3em; /* Tamaño grande para el título */
+  }
+  
+  /* Estilos para la descripción principal */
+  .home-container {
+    max-width: 900px;
+    margin: 20px auto; /* Centra el contenedor */
+    padding: 20px;
+    text-align: center;
+    background-color: white; /* Fondo blanco para el contenido */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Estilos para el párrafo */
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555; /* Color del texto */
+  }
+  .add-button {
+    background-color: #7b2f0e; 
+    color: #dab897; 
+    margin-right: 22px;
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Cambiar cursor a mano al pasar */
+    border-radius: 5px; 
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #360408; /* Color de fondo al pasar el ratón */
+  }
+  

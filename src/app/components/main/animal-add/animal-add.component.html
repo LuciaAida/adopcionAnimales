@@ -1,0 +1,43 @@
+<!--<h3>Add Pokemon</h3>
+<input #pokemonName placeholder="Name"/>
+<input #pokemonType placeholder="Type"/>
+<button (click)="addPokemon(pokemonName.value, pokemonType.value)">Añadir pokémon</button>-->
+<div class="animal-add">
+    <div class="input-container">
+        <label for="animalIcon">Añadir Imagen del Animal:</label>
+        <input id="animalIcon" #animalIcon placeholder="url" type="url" />
+
+        <label for="animalName2">Nombre:</label>
+        <input id="animalName2" #animalName2 placeholder="Nombre" type="text" />
+
+        <label for="animalType">Tipo:</label>
+        <select id="animalType" #animalType>
+            <option *ngFor="let type of tiposAnimal" [value]="type">{{ type }}</option>
+        </select>
+
+        <label for="animalSexo">Sexo:</label>
+        <select id="animalSexo" #animalSexo>
+            <option *ngFor="let type2 of tiposSexo" [value]="type2">{{ type2 }}</option>
+        </select>
+
+        <label for="animalTamanio">Tamaño:</label>
+        <select id="animalTamanio" #animalTamanio>
+            <option *ngFor="let type3 of tiposTamanio" [value]="type3">{{type3}}</option>
+        </select>
+
+        <label for="animalDescription">Descripción:</label>
+        <textarea id="animalDescription" #animalDescription placeholder="Descripción"></textarea>
+    </div>
+
+    <button class="add-button" (click)="addAnimales(animalIcon.value, animalName2.value, animalType.value, animalSexo.value, animalTamanio.value, animalDescription.value)">
+        Añadir animal
+    </button>
+</div>
+
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <p>{{ modalMessage }}</p>
+    </div>
+</div>
+
