@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AnimalServiceService } from '../../../services/animal-service.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-animal-add',
@@ -10,22 +11,26 @@ import { CommonModule } from '@angular/common';
    styleUrl: './animal-add.component.css'
 })
 export class AnimalAddComponent {
-  showModal: boolean = false;
-  modalMessage: string = '';
+  mostrarModal: boolean = false;
+  modalMensaje: string = '';
 
   tiposAnimal: string [] = ['Perro', 'Gato'];
   tiposSexo:string[] = ['Macho','Hembra'];
   tiposTamanio: string[] = ['Pequeño','Mediano','Grande','Gigante'];
   
-  constructor(private AnimalServiceService: AnimalServiceService){}
+  constructor(private AnimalServiceService: AnimalServiceService, private router: Router){}
 
   addAnimales(url:string,name: string, type: string, sexo:string,tamanio:string,description:string ){
     this.AnimalServiceService.addAnimal( url,name, type, sexo, tamanio, description);
-    this.modalMessage = 'Animal ' + name +' añadido con éxito';
-    this.showModal = true;
+    this.modalMensaje = 'Animal ' + name +' añadido con éxito';
+    this.mostrarModal = true;
   }
-  closeModal() {
-    this.showModal = false; // Oculta el modal
+  cerrarModal() {
+    this.mostrarModal = false; // Oculta el modal
+  }
+
+  volverAtras(){
+    this.router.navigate(['/list']);
   }
   
 }

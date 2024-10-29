@@ -1,4 +1,4 @@
-.animal-details {
+.detalles-animal {
   background-color: #c17a48;
   padding: 20px;
   border-radius: 10px;
@@ -6,17 +6,17 @@
   margin: auto;
 }
 
-.details-container {
+.elemento-detalles {
   display: flex;
   flex-direction: column;
 }
 
-.detail-item {
+.elemento-detalles {
   margin-bottom: 15px;
   width: 100%;
 }
 
-.detail-item label {
+.elemento-detalles label {
   font-weight: bold;
 }
 .animal {
@@ -29,11 +29,11 @@
   width: 600px; /* Fijar el tamaño de la imagen */
 }
 
-.animal-name {
+.animal-nombre {
   margin-left: -120px; 
 }
 
-.animal .animal-name input {
+.animal .animal-nombre input {
   font-size: 20px;
   width: 100%;
   background: none;
@@ -41,7 +41,7 @@
   color: black;
 }
 
-.detail-item select, .detail-item textarea {
+.elemento-detalles select, .elemento-detalles textarea {
   font-size: 16px;
   padding: 5px;
   border: 1px solid #dab897;
@@ -55,12 +55,12 @@ textarea {
   resize: none;
 }
 
-.button-container {
+.contenedor-modal {
   display: flex;
   justify-content: space-between;
 }
 
-.back-button, .edit-button {
+.volver-boton, .editar-boton {
   background-color: #7b2f0e;
   color: #d4c4b4;
   padding: 10px 20px;
@@ -72,6 +72,6 @@ textarea {
   cursor: pointer;
 }
 
-.edit-button:hover, .back-button:hover {
+.editar-boton:hover, .volver-boton:hover {
   background-color: #360408;
 }

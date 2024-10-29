@@ -2,8 +2,8 @@
 <input #pokemonName placeholder="Name"/>
 <input #pokemonType placeholder="Type"/>
 <button (click)="addPokemon(pokemonName.value, pokemonType.value)">Añadir pokémon</button>-->
-<div class="animal-add">
-    <div class="input-container">
+<div class="añadir-animal ">
+    <div class="formulario-animal">
         <label for="animalIcon">Añadir Imagen del Animal:</label>
         <input id="animalIcon" #animalIcon placeholder="url" type="url" />
 
@@ -29,15 +29,16 @@
         <textarea id="animalDescription" #animalDescription placeholder="Descripción"></textarea>
     </div>
 
-    <button class="add-button" (click)="addAnimales(animalIcon.value, animalName2.value, animalType.value, animalSexo.value, animalTamanio.value, animalDescription.value)">
+    <button class="añadir-boton" (click)="addAnimales(animalIcon.value, animalName2.value, animalType.value, animalSexo.value, animalTamanio.value, animalDescription.value)">
         Añadir animal
     </button>
 </div>
 
-<div class="modal" *ngIf="showModal">
-    <div class="modal-content">
-        <span class="close" (click)="closeModal()">&times;</span>
-        <p>{{ modalMessage }}</p>
+<div class="modal" *ngIf="mostrarModal">
+    <div class="modal-contenido">
+        <p>{{ modalMensaje }}</p>
+        <button class="detalle-añadir" (click)="volverAtras()">Aceptar</button>
+        <button class="detalle-añadir" (click)="cerrarModal()">Cerrar</button>
     </div>
 </div>
 

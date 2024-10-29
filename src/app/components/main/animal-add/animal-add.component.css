@@ -13,24 +13,24 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
-.animal-add {
+.añadir-animal {
   max-width: 600px; 
   margin: 20px auto; 
   text-align: center; 
-  padding: 20px; /* Espacio interno */
+  padding: 20px; 
   background-color: #c17a48; 
   border-radius: 12px;
-  display: flex; /* Usar flexbox para el contenedor */
-  flex-direction: column; /* Colocar los elementos en columna */
-  align-items: center; /* Centrar horizontalmente los elementos */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
-.input-container label {
+.formulario-animal label {
   margin-bottom: 5px;
   font-weight: bold; /* Negrita para las etiquetas */
 }
 
-.input-container {
+.formulario-animal {
   margin-bottom: 8px; /* Espacio entre los campos */
   width: 100%; 
   display: flex;
@@ -38,7 +38,7 @@ body {
   align-items: flex-start;
 }
 
-.input-container input, .input-container select, .input-container textarea { /*mismo estilo en el nombre, el tipo y la descripcion*/
+.formulario-animal input, .formulario-animal select, .formulario-animal textarea { /*mismo estilo en el nombre, el tipo y la descripcion*/
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -47,13 +47,13 @@ body {
   box-sizing: border-box;
 }
 
-.input-container textarea {
+.formulario-animal textarea {
   height: 100px; 
-  resize: none; /* Permitir que el usuario no ajuste el tamaño */
-  overflow-y: auto; /* Mostrar barra de desplazamiento vertical si el texto es largo */
+  resize: none; 
+  overflow-y: auto; 
 }
 
-.add-button {
+.añadir-boton {
   background-color: #7b2f0e; 
   color: #dab897; 
   border: none;
@@ -61,51 +61,56 @@ body {
   font-size: 16px;
   display: flex;
   align-items: center;
-  cursor: pointer; /* Cambiar cursor a mano al pasar */
+  cursor: pointer;
   border-radius: 5px; 
   text-align: center;
   transition: background-color 0.3s ease;
 }
 
-.add-button:hover {
-  background-color: #360408; /* Color de fondo al pasar el ratón */
+.añadir-boton:hover {
+  background-color: #360408;
   transform: scale(0.9);
 }
 
 .modal {
-  display: flex; /* Usar flexbox para centrar el modal */
-  position: fixed; /* Fijar el modal en la pantalla */
-  z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+  display: flex; 
+  position: fixed; 
+  z-index: 1000; 
   left: 0;
   top: 0;
-  width: 100%; /* Ancho completo */
-  height: 100%; /* Altura completa */
-  overflow: auto; /* Agregar barra de desplazamiento si es necesario */
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5); 
 }
 
-.modal-content {
-  background-color: #804b35; /* Fondo blanco para el contenido del modal */
-  margin: auto; /* Centrando el modal */
-  padding: 20px; /* Espacio interno */
-  border: 1px solid #501b04; /* Borde */
-  width: 300px; /* Ancho del modal */
-  height: 50px;
+.modal-contenido {
+  background-color: #804b35; 
+  margin: auto; 
+  padding: 35px; 
+  border: 1px solid #501b04; 
+  width: 260px; 
+  height: 70px;
   font-size: 20px;
-  border-radius: 10px; /* Bordes redondeados */
+  border-radius: 10px; 
   color: white;
 }
 
-.close {
-  color: #501b04; /* Color del botón de cierre */
-  float: right; /* Alinear el botón de cierre a la derecha */
-  font-size: 28px; /* Tamaño del texto */
+.detalle-añadir{
+  background-color: #7b2f0e; 
+  color: #dab897; 
+  border: none;
+  float: center; 
+  padding: 10px 20px;
+  margin-left: 20px;
+  font-size: 16px;
+  align-items: center;
+  cursor: pointer; 
+  border-radius: 5px; 
+  text-align: center;
 }
 
-.close:hover,
-.close:focus {
-  color: black; /* Cambiar color al pasar el ratón */
-  text-decoration: none; /* Sin subrayado */
-  cursor: pointer; /* Cambiar cursor a mano al pasar */
+.detalle-añadir:hover {
+  background-color: #360408; 
+  transform: scale(0.9);
 }
-

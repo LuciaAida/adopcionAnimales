@@ -23,23 +23,48 @@ export class AnimalProyectoComponent implements OnInit{
   dialog: any;
 
   constructor(private AnimalServiceService: AnimalServiceService, private router:Router){}
+  mostrarModal: boolean = false;
+  modalMensaje: string = '';
+  idAnimal: number|null = null; //guarda temporalmente el id
 
   ngOnInit(): void {
     this.animales =this.AnimalServiceService.getAnimales();
   }
+  cerrarModal() {
+    this.mostrarModal = false; // Oculta el modal
+    this.idAnimal = null; 
+  }
 
-  deleteAnimal(id: number){
-    this.AnimalServiceService.deleteAnimal(id);
+  eliminarAnimal(id: number){
+    this.modalMensaje = '¿Estás seguro que deseas eliminar el animal?';
+    this.mostrarModal = true;
+    this.idAnimal = id;
+    
+  }
+
+  confirmarEliminacion(){
+    if(this.idAnimal != null){
+      console.log(this.idAnimal);
+      console.log(this.animales);
+      this.animales.splice(this.idAnimal, 1);
+      console.log(this.animales);
+      this.mostrarModal = false;
+      this.idAnimal = null; //se pone a null, para ver el siguiente
+      this.router.navigate(['/list']);
+    }else{
+      this.mostrarModal = false;
+      this.idAnimal = null; 
+    }
   }
 
   viewAnimal(id: number){
     this.router.navigate(['/animal', id]);
   }
 
-  getShortDescription(description: string, limit: number = 2): string {//limitar el numero de caracteres de la descripcion
-    if (description.length > limit) {
-      return description.substring(0, limit) + '...';
-    }
-    return description;
+  //comprobamos si la imagen es grande o pequeña
+  //luego vemos la longitud de la descripcion, si es mayor al limite entonces se acorta 
+  acortarDescripcion(description: string, esImagenGrande: boolean, limitPequeno: number = 15, limitGrande: number = 50): string {
+    const limit = esImagenGrande ? limitPequeno : limitGrande; 
+    return description.length > limit ? description.substring(0, limit) + '...' : description; 
   }
 }

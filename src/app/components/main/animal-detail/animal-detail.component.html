@@ -1,45 +1,43 @@
-<div class="animal-details">
+<div class="detalles-animal">
 
   <div class="animal">
     <div class="animal-url">
       <img [src]="animal.url" alt="Vista Previa de la Imagen" style="width: 40%;margin: 0 auto;text-align: center;"/>
     </div>
-    <div class="animal-name">
+    <div class="animal-nombre">
       <input [(ngModel)]="animal.name" [disabled]="!isEditing" />
     </div>
   </div>
-
   
-  <div class="detail-item">
+  <div class="elemento-detalles">
     <label>Tipo:</label>
     <select [(ngModel)]="animal.type" [disabled]="!isEditing">
         <option *ngFor="let type of tiposAnimal" [value]="type">{{ type }}</option>
     </select>
 </div>
 
-<div class="detail-item">
+<div class="elemento-detalles">
     <label>Sexo:</label>
     <select [(ngModel)]="animal.sexo" [disabled]="!isEditing">
         <option *ngFor="let sexo of tiposSexo" [value]="sexo">{{ sexo }}</option>
     </select>
 </div>
 
-<div class="detail-item">
+<div class="elemento-detalles">
   <label>Tamaño:</label>
   <select [(ngModel)]="animal.tamanio" [disabled]="!isEditing">
       <option *ngFor="let tamanio of tiposTamanio" [value]="tamanio">{{ tamanio }}</option>
   </select>
 </div>
-
   
-  <div class="detail-item">
+  <div class="elemento-detalles">
     <label>Descripción:</label>
     <textarea [(ngModel)]="animal.description" [disabled]="!isEditing"></textarea>
   </div>
   
-  <div class="button-container">
-    <button class="back-button" routerLink="/list">Volver a la lista</button>
-    <button class="edit-button" (click)="toggleEdit()">
+  <div class="contenedor-modal">
+    <button class="volver-boton" routerLink="/list">Volver a la lista</button>
+    <button class="editar-boton" (click)="toggleEdit()">
       {{ isEditing ? 'Guardar' : 'Editar todo' }}
     </button>
   </div>

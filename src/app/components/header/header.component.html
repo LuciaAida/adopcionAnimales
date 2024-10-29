@@ -1,5 +1,10 @@
 <header>   
 <div class="navbar">
+  <!--<button mat-button[matMenuTriggerFor]="menu">Lista de animales en adopción</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item> Lista de perros </button>
+    <button mat-menu-item>Lista de gatos</button>
+  </mat-menu>-->
     <button (click)="navigateTo('/list')" class="add-button">Lista de animales en adopción</button>
     <button (click)="navigateTo('/add')" class="add-button">Añadir animal</button>
   </div>
