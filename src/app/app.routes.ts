@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { AnimalProyectoComponent } from './components/main/animal-proyecto/animal-proyecto.component';
-import { AnimalAddComponent } from './components/main/animal-add/animal-add.component';
-import { AnimalDetailComponent } from './components/main/animal-detail/animal-detail.component';
+import { AnimalProyectoComponent } from './components/main/animal/animal-proyecto/animal-proyecto.component';
+import { AnimalAddComponent } from './components/main/animal/animal-add/animal-add.component';
+import { AnimalDetailComponent } from './components/main/animal/animal-detail/animal-detail.component';
 
 
 export const routes: Routes = [

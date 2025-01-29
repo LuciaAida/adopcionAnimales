@@ -1,14 +1,11 @@
-<!--<h3>Add Pokemon</h3>
-<input #pokemonName placeholder="Name"/>
-<input #pokemonType placeholder="Type"/>
-<button (click)="addPokemon(pokemonName.value, pokemonType.value)">Añadir pokémon</button>-->
 <div class="añadir-animal ">
+    <form [formGroup]="form" (submit)="send()">
     <div class="formulario-animal">
         <label for="animalIcon">Añadir Imagen del Animal:</label>
-        <input id="animalIcon" #animalIcon placeholder="url" type="url" />
+        <input id="animalIcon" #animalIcon placeholder="url" type="url" formControlName="url"/>
 
         <label for="animalName2">Nombre:</label>
-        <input id="animalName2" #animalName2 placeholder="Nombre" type="text" />
+        <input id="animalName2" #animalName2 placeholder="Nombre" type="text" formControlName="name"/>
 
         <label for="animalType">Tipo:</label>
         <select id="animalType" #animalType>
@@ -26,14 +23,14 @@
         </select>
 
         <label for="animalDescription">Descripción:</label>
-        <textarea id="animalDescription" #animalDescription placeholder="Descripción"></textarea>
+        <textarea id="animalDescription" #animalDescription placeholder="Descripción" formControlName="description"></textarea>
     </div>
 
-    <button class="añadir-boton" (click)="addAnimales(animalIcon.value, animalName2.value, animalType.value, animalSexo.value, animalTamanio.value, animalDescription.value)">
+    <button class="añadir-boton">
         Añadir animal
     </button>
+    </form>
 </div>
-
 <div class="modal" *ngIf="mostrarModal">
     <div class="modal-contenido">
         <p>{{ modalMensaje }}</p>

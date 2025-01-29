@@ -1,39 +1,25 @@
 .footer {
     background-color: #7b2f0e; /* Fondo principal */
     color: #d4c4b4; /* Color de texto */
-    padding: 25px 20px; /* Ajuste de padding */
+    padding: 7px 7px; /* Ajuste de padding */
     font-size: 16px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-family: Arial, sans-serif;
+    margin-top: auto;
 }
 
-.info-contacto {
+.detalles-contacto{
     display: flex;
     align-items: center;
     gap: 20px; /* Espacio entre los elementos de contacto */
-}
+} 
 
 .detalles-contacto p, 
 .abajo-footer p {
     margin: 0; /* Elimina el margen predeterminado */
 }
 
-.icono {
-    font-size: 18px; 
-    margin-right: 5px; /* Espacio después del icono */
-    color: #d4c4b4;
-}
-
 .abajo-footer {
     font-size: 14px;
     color: #c17a48;
     text-align: right;
-}
-
-a {
-    color: #d4c4b4;
-    text-decoration: none; /* Sin subrayado */
-    transition: color 0.3s ease;
 }

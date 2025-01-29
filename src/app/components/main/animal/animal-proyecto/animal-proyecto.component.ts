@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
-import { AnimalServiceService } from '../../../services/animal-service.service';
+import { AnimalServiceService } from '../../../../services/animal-service.service';
 import { Router } from '@angular/router';
+import { animalModel } from '../model/animal.model';
 
 @Component({
   selector: 'app-animal-proyecto',
@@ -10,15 +11,15 @@ import { Router } from '@angular/router';
   templateUrl: './animal-proyecto.component.html',
   styleUrl: './animal-proyecto.component.css'
 })
-export class AnimalProyectoComponent implements OnInit{
+ export class AnimalProyectoComponent /*implements OnInit*/{
 
   tiposAnimal: string[]=['Gato','Perro'];
   tiposSexo:string[]=['Macho','Hembra'];
   tiposTamanio: string[] = ['Pequeño','Mediano','Grande','Gigante'];
   
 
-  animales: {id:number, url:string, name: string, type: string, sexo: string,tamanio: string, description:string} []= [];
-
+  animales!: Array<animalModel>
+  animal: any;
   editingIndex: number | null = null;
   dialog: any;
 
@@ -26,10 +27,16 @@ export class AnimalProyectoComponent implements OnInit{
   mostrarModal: boolean = false;
   modalMensaje: string = '';
   idAnimal: number|null = null; //guarda temporalmente el id
-
+  
   ngOnInit(): void {
-    this.animales =this.AnimalServiceService.getAnimales();
+    this.AnimalServiceService.getAnimales().subscribe((data: any) => {
+      this.animales = data; // Asigna los datos recibidos del observable a la variable 'animales'
+      console.log('Lista de animales:', this.animales); // Para depuración
+    }, (error) => {
+      console.error('Error al cargar animales:', error); // Manejo de errores
+    });
   }
+  
   cerrarModal() {
     this.mostrarModal = false; // Oculta el modal
     this.idAnimal = null; 
@@ -44,10 +51,7 @@ export class AnimalProyectoComponent implements OnInit{
 
   confirmarEliminacion(){
     if(this.idAnimal != null){
-      console.log(this.idAnimal);
-      console.log(this.animales);
       this.animales.splice(this.idAnimal, 1);
-      console.log(this.animales);
       this.mostrarModal = false;
       this.idAnimal = null; //se pone a null, para ver el siguiente
       this.router.navigate(['/list']);

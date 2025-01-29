@@ -1,0 +1,117 @@
+/*#360408  marron oscuro (letras)
+#7b2f0e  marron menos oscuro
+#c17a48 marron 
+#dab897  marron clarito
+#efe7dd   gris*/ 
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: 'Arial', sans-serif;
+}
+
+.añadir-animal {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #c17a48;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario-animal {
+  width: 100%; /* El formulario ocupa todo el ancho */
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-animal label {
+  font-weight: bold;
+  color: #360408;
+  margin-bottom: 5px; /* Separación entre la etiqueta y el campo */
+}
+
+.formulario-animal input,
+.formulario-animal select,
+.formulario-animal textarea {
+  width: 100%; /* Campos ocupan todo el ancho disponible */
+  padding: 10px;
+  margin-bottom: 15px; /* Espaciado consistente entre campos */
+  font-size: 16px;
+  border: 2px solid #dab897;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #efe7dd; /* Fondo claro para los campos */
+}
+
+.formulario-animal textarea {
+  height: 100px;
+  resize: none;
+}
+
+.añadir-boton {
+  width: 100%; /* Botón ocupa todo el ancho del formulario */
+  background-color: #7b2f0e;
+  color: #dab897;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.añadir-boton:hover {
+  background-color: #360408;
+  transform: scale(1.02);
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  background-color: #804b35;
+  padding: 20px;
+  border: 1px solid #501b04;
+  width: 90%; /* Mejor para pantallas pequeñas */
+  max-width: 400px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.detalle-añadir {
+  background-color: #7b2f0e;
+  color: #dab897;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.detalle-añadir:hover {
+  background-color: #360408;
+  transform: scale(1.02);
+}
