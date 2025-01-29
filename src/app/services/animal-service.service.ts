@@ -7,7 +7,7 @@ import { animalModel } from '../components/main/animal/model/animal.model';
   providedIn: 'root'
 })
 export class AnimalServiceService {
-  private baseUrl = 'http://http://192.168.0.111/api/alumno1/alumnos.php?table=';
+  private baseUrl = 'https://55d7-79-151-55-38.ngrok-free.app:80/api/alumno1/alumnos.php?table=';
 
   constructor(private http: HttpClient) { }
 
