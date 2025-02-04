@@ -26,9 +26,7 @@
         <textarea id="animalDescription" #animalDescription placeholder="Descripción" formControlName="description"></textarea>
     </div>
 
-    <button class="añadir-boton">
-        Añadir animal
-    </button>
+    <button class="send" (click)="send()">Añadir Animal</button>
     </form>
 </div>
 <div class="modal" *ngIf="mostrarModal">

@@ -55,7 +55,7 @@ body {
   resize: none;
 }
 
-.añadir-boton {
+.send {
   width: 100%; /* Botón ocupa todo el ancho del formulario */
   background-color: #7b2f0e;
   color: #dab897;
@@ -68,7 +68,7 @@ body {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.añadir-boton:hover {
+.send:hover {
   background-color: #360408;
   transform: scale(1.02);
 }

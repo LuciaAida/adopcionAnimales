@@ -12,13 +12,8 @@ import { animalModel } from '../model/animal.model';
   styleUrl: './animal-proyecto.component.css'
 })
  export class AnimalProyectoComponent /*implements OnInit*/{
-
-  tiposAnimal: string[]=['Gato','Perro'];
-  tiposSexo:string[]=['Macho','Hembra'];
-  tiposTamanio: string[] = ['Pequeño','Mediano','Grande','Gigante'];
   
-
-  animales!: Array<animalModel>
+  animales: animalModel[]=[];
   animal: any;
   editingIndex: number | null = null;
   dialog: any;
@@ -26,10 +21,10 @@ import { animalModel } from '../model/animal.model';
   constructor(private AnimalServiceService: AnimalServiceService, private router:Router){}
   mostrarModal: boolean = false;
   modalMensaje: string = '';
-  idAnimal: number|null = null; //guarda temporalmente el id
+  animal_id: number|null = null; //guarda temporalmente el id
   
   ngOnInit(): void {
-    this.AnimalServiceService.getAnimales().subscribe((data: any) => {
+    this.AnimalServiceService.getAnimales().subscribe((data: animalModel[]) => {
       this.animales = data; // Asigna los datos recibidos del observable a la variable 'animales'
       console.log('Lista de animales:', this.animales); // Para depuración
     }, (error) => {
@@ -39,27 +34,28 @@ import { animalModel } from '../model/animal.model';
   
   cerrarModal() {
     this.mostrarModal = false; // Oculta el modal
-    this.idAnimal = null; 
+    this.animal_id = null; 
   }
 
-  eliminarAnimal(id: number){
+  eliminarAnimal(animal_id: number) {
     this.modalMensaje = '¿Estás seguro que deseas eliminar el animal?';
     this.mostrarModal = true;
-    this.idAnimal = id;
-    
+    this.animal_id = animal_id;
   }
 
   confirmarEliminacion(){
-    if(this.idAnimal != null){
-      this.animales.splice(this.idAnimal, 1);
-      this.mostrarModal = false;
-      this.idAnimal = null; //se pone a null, para ver el siguiente
-      this.router.navigate(['/list']);
+    if(this.animal_id != null){
+    this.AnimalServiceService.deleteAnimal(this.animal_id).subscribe((data) => {
+        console.log(data);
+        this.mostrarModal = false;
+        this.animales = this.animales.filter(animal => animal.animal_id !== this.animal_id); //eliminar del array
+        this.animal_id = null;
+    });
     }else{
-      this.mostrarModal = false;
-      this.idAnimal = null; 
+        this.mostrarModal = false;
+        this.animal_id = null; 
     }
-  }
+}
 
   viewAnimal(id: number){
     this.router.navigate(['/animal', id]);
