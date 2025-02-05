@@ -17,6 +17,11 @@ import { animalModel } from '../model/animal.model';
   animal: any;
   editingIndex: number | null = null;
   dialog: any;
+  tiposAnimal = [
+    { id: 1, nombre: 'Perro' },
+    { id: 2, nombre: 'Gato' }
+  ];
+  
 
   constructor(private AnimalServiceService: AnimalServiceService, private router:Router){}
   mostrarModal: boolean = false;
@@ -24,12 +29,21 @@ import { animalModel } from '../model/animal.model';
   animal_id: number|null = null; //guarda temporalmente el id
   
   ngOnInit(): void {
-    this.AnimalServiceService.getAnimales().subscribe((data: animalModel[]) => {
-      this.animales = data; // Asigna los datos recibidos del observable a la variable 'animales'
-      console.log('Lista de animales:', this.animales); // Para depuración
-    }, (error) => {
-      console.error('Error al cargar animales:', error); // Manejo de errores
-    });
+    this.AnimalServiceService.getAnimales().subscribe(
+      (data: animalModel[]) => {
+        this.animales = data;
+        console.log('Lista de animales:', this.animales); // Verifica si llegan bien los datos
+      },
+      (error) => {
+        console.error('Error al cargar animales:', error);
+      }
+    );
+  }
+
+  getTipoNombre(tipoId: number): string {
+    console.log('Tipo recibido:', tipoId); // <-- Depuración
+    const tipo = this.tiposAnimal.find(t => t.id === tipoId);
+    return tipo ? tipo.nombre : 'Desconocido';
   }
   
   cerrarModal() {

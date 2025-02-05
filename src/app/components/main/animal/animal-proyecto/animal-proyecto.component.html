@@ -1,39 +1,29 @@
-<p *ngIf="animales.length === 0" style="font-size: 30px;">
-    Están todos los animales adoptados.
-    <img src="https://png.pngtree.com/png-vector/20240623/ourmid/pngtree-portrait-of-happy-dog-and-cat-that-looking-at-the-camera-png-image_12828737.png" class="perro-feliz">
-  </p>
-  
-  <div class="overflow">
-    <div class="animal-grid" *ngIf="animales.length > 0">
-      <div class="carta-animal" *ngFor="let animal of animales; let i = index">
-        <h3>{{ animal.nombre }}</h3>
-        <img [src]="animal.foto_url" alt="Vista Previa de la Imagen" style="width: 85%; margin: 0 auto; text-align: center;"/>
-        <p>Tipo: {{ animal.tipo_id }}</p> <!-- Suponiendo que 'tipo_id' es el valor del tipo -->
-        <p>Sexo: {{ animal.sexo }}</p>
-        <p>Tamaño: {{ animal.tamanio }}</p>
-        <!-- Descripción recortada -->
-        <p>{{ acortarDescripcion(animal.descripcion || '', animal.foto_url.length > 100) }}</p>
-        
-        <!-- Botón de Eliminar -->
-        <div class="grupo-botones">
-          <button (click)="eliminarAnimal(animal.animal_id)">
-            Eliminar
-            <img src="https://cdn-icons-png.flaticon.com/512/860/860829.png" class="basura">
-          </button>
-  
-          <!-- Modal de eliminación -->
-          <div class="modal" *ngIf="mostrarModal">
-            <div class="modal-contenido">
-              <p>{{ modalMensaje }}</p>
-              <button class="detalles-boton" (click)="confirmarEliminacion()">Aceptar</button>
-              <button class="detalles-boton" (click)="cerrarModal()">Cerrar</button>
-            </div>
+<div class="overflow">
+  <div class="animal-grid" *ngIf="animales.length > 0">
+    <div class="carta-animal" *ngFor="let animal of animales; let i = index">
+      <h3>{{ animal.nombre }}</h3>
+      <img [src]="animal.foto_url" alt="Vista Previa de la Imagen" style="width: 85%; margin: 0 auto; text-align: center;"/>
+      <p><strong>Tipo:</strong> {{ getTipoNombre(animal.tipo_id) }}</p> <!-- Ahora mostramos 'tipo_nombre' -->
+      <p><strong>Sexo:</strong>  {{ animal.sexo }}</p>
+      <p><strong>Tamaño:</strong>  {{ animal.tamanio }}</p>
+      <p><strong>Descripción:</strong> {{ acortarDescripcion(animal.descripcion || '', animal.foto_url.length > 100) }}</p>
+      
+      <div class="grupo-botones">
+        <button (click)="eliminarAnimal(animal.animal_id)">
+          Eliminar
+          <img src="https://cdn-icons-png.flaticon.com/512/860/860829.png" class="basura">
+        </button>
+
+        <div class="modal" *ngIf="mostrarModal">
+          <div class="modal-contenido">
+            <p>{{ modalMensaje }}</p>
+            <button class="detalles-boton" (click)="confirmarEliminacion()">Aceptar</button>
+            <button class="detalles-boton" (click)="cerrarModal()">Cerrar</button>
           </div>
-  
-          <!-- Botón de detalles -->
-          <button (click)="viewAnimal(animal.animal_id)">Detalles</button>  <!-- Cambiado a 'animal.animal_id' -->
         </div>
+
+        <button (click)="viewAnimal(animal.animal_id)">Detalles</button> 
       </div>
     </div>
   </div>
-  
+</div>

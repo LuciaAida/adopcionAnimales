@@ -7,31 +7,31 @@ import { animalModel } from '../components/main/animal/model/animal.model';
   providedIn: 'root'
 })
 export class AnimalServiceService {
-  private baseUrl = 'https://c74f4156107e.ngrok.app/api/lucia/API.php?table=';
+  private baseUrl = 'https://c74f4156107e.ngrok.app/api/lucia/API.php?table=animales';
 
   constructor(private http: HttpClient) { }
 
   getAnimales(): Observable<animalModel[]> {
-    return this.http.get<animalModel[]>(`${this.baseUrl}animales`);
+    return this.http.get<animalModel[]>(`${this.baseUrl}`);
   }
 
-  addAnimal(animal: animalModel): Observable<any> {
+  addAnimal(animal: animalModel): Observable<animalModel> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(`${this.baseUrl}animales`, animal, { headers });  // Enviar la solicitud POST a la API
+    return this.http.post<animalModel>(`${this.baseUrl}`,animal, { headers }); 
   }
 
   deleteAnimal(animalId: number): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { animal_id: animalId };
-    return this.http.delete(`${this.baseUrl}animales&animal_id=${animalId}`, { headers });
+    return this.http.delete(`${this.baseUrl}&animal_id=${animalId}`, { headers });
   }
   updateAnimal(updatedAnimal: animalModel): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put(`${this.baseUrl}animales`, updatedAnimal, { headers });
+    return this.http.put(`${this.baseUrl}`, updatedAnimal, { headers });
   }
 
   getItemById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}animales/${id}`);
+    return this.http.get(`${this.baseUrl}&animal_id=${id}`);
   }
 }
 

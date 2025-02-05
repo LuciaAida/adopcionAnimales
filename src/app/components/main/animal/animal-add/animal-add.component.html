@@ -1,39 +1,41 @@
-<div class="añadir-animal ">
-    <form [formGroup]="form" (submit)="send()">
-    <div class="formulario-animal">
+<div class="añadir-animal">
+    <form [formGroup]="form" (ngSubmit)="send()">  <!-- Cambié el evento a ngSubmit -->
+      <div class="formulario-animal">
         <label for="animalIcon">Añadir Imagen del Animal:</label>
         <input id="animalIcon" #animalIcon placeholder="url" type="url" formControlName="url"/>
-
+  
         <label for="animalName2">Nombre:</label>
         <input id="animalName2" #animalName2 placeholder="Nombre" type="text" formControlName="name"/>
-
+  
         <label for="animalType">Tipo:</label>
-        <select id="animalType" #animalType>
-            <option *ngFor="let type of tiposAnimal" [value]="type">{{ type }}</option>
+        <select id="animalType" formControlName="tipo">
+            <option *ngFor="let type of tiposAnimal" [value]="type.id">{{ type.nombre }}</option>
         </select>
+
 
         <label for="animalSexo">Sexo:</label>
-        <select id="animalSexo" #animalSexo>
-            <option *ngFor="let type2 of tiposSexo" [value]="type2">{{ type2 }}</option>
+        <select id="animalSexo" formControlName="sexo">  
+          <option *ngFor="let type2 of tiposSexo" [value]="type2">{{ type2 }}</option>
         </select>
-
+  
         <label for="animalTamanio">Tamaño:</label>
-        <select id="animalTamanio" #animalTamanio>
-            <option *ngFor="let type3 of tiposTamanio" [value]="type3">{{type3}}</option>
+        <select id="animalTamanio" formControlName="tamanio"> 
+          <option *ngFor="let type3 of tiposTamanio" [value]="type3">{{type3}}</option>
         </select>
-
+  
         <label for="animalDescription">Descripción:</label>
-        <textarea id="animalDescription" #animalDescription placeholder="Descripción" formControlName="description"></textarea>
-    </div>
-
-    <button class="send" (click)="send()">Añadir Animal</button>
+        <textarea id="animalDescription" formControlName="description" placeholder="Descripción"></textarea>
+      </div>
+  
+      <button class="send" type="submit">Añadir Animal</button>  <!-- Cambié el tipo a submit -->
     </form>
-</div>
-<div class="modal" *ngIf="mostrarModal">
+  </div>
+  
+  <div class="modal" *ngIf="mostrarModal">
     <div class="modal-contenido">
-        <p>{{ modalMensaje }}</p>
-        <button class="detalle-añadir" (click)="volverAtras()">Aceptar</button>
-        <button class="detalle-añadir" (click)="cerrarModal()">Cerrar</button>
+      <p>{{ modalMensaje }}</p>
+      <button class="detalle-añadir" (click)="volverAtras()">Aceptar</button>
+      <button class="detalle-añadir" (click)="cerrarModal()">Cerrar</button>
     </div>
-</div>
-
+  </div>
+  

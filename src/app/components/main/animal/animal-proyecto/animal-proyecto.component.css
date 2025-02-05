@@ -12,7 +12,7 @@
     padding: 20px; 
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    height: 450px; 
+    height: 480px; 
     display: flex;
     overflow: hidden;
     flex-direction: column; /* Asegura que los elementos estén en columna */

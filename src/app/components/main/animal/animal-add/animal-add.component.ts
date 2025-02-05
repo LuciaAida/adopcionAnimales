@@ -18,7 +18,11 @@ export class AnimalAddComponent implements OnInit {
   mostrarModal: boolean = false;
   modalMensaje: string = '';
 
-  tiposAnimal: string[] = ['Perro', 'Gato'];
+  tiposAnimal = [
+    { id: 1, nombre: 'Perro' },
+    { id: 2, nombre: 'Gato' }
+  ];
+  
   tiposSexo: string[] = ['Macho', 'Hembra'];
   tiposTamanio: string[] = ['Pequeño', 'Mediano', 'Grande', 'Gigante'];
 
@@ -31,15 +35,19 @@ export class AnimalAddComponent implements OnInit {
   // Método para agregar un animal
   addAnimales() {
     const animal: animalModel = {
-      animal_id: 0,
-      foto_url: this.form.value.url,
-      nombre: this.form.value.name,
-      tipo_id: 1,
-      sexo: this.form.value.sexo,
-      tamanio: this.form.value.tamanio,
-      descripcion: this.form.value.description,
+      animal_id: 0,                   
+      foto_url: this.form.value.url,   
+      nombre: this.form.value.name,    
+      tipo_id: 1,                      
+      sexo: this.form.value.sexo,      
+      tamanio: this.form.value.tamanio, 
+      descripcion: this.form.value.description, 
+      edad: this.form.value.edad || 0,  // Edad opcional, si no la hay, pon un valor por defecto
+      fecha_ingreso: this.form.value.fecha_ingreso || new Date().toISOString().split('T')[0], // Fecha actual si no se proporciona
+      disponible: this.form.value.disponible || true,  
     };
   
+    // Enviar la solicitud al backend
     this.AnimalServiceService.addAnimal(animal).subscribe(
       (response) => {
         console.log('Respuesta de la API:', response);
@@ -53,6 +61,7 @@ export class AnimalAddComponent implements OnInit {
       }
     );
   }
+  
   
 
   // Cerrar el modal
@@ -71,11 +80,12 @@ export class AnimalAddComponent implements OnInit {
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       url: ['', [Validators.required]],
-      tipo: [this.tiposAnimal[0], [Validators.required]],  // Valor predeterminado para el tipo
-      sexo: [this.tiposSexo[0], [Validators.required]],   // Valor predeterminado para sexo
-      tamanio: [this.tiposTamanio[1], [Validators.required]] // Valor predeterminado para tamaño
+      tipo: [this.tiposAnimal[0].id, [Validators.required]],  // Asignamos el valor por defecto aquí
+      sexo: [this.tiposSexo[0], [Validators.required]],   
+      tamanio: [this.tiposTamanio[1], [Validators.required]] 
     });
   }
+  
 
   // Método para enviar el formulario
   send(): any {
