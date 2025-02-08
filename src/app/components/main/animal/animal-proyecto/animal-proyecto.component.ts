@@ -3,11 +3,12 @@ import { Component, OnInit} from '@angular/core';
 import { AnimalServiceService } from '../../../../services/animal-service.service';
 import { Router } from '@angular/router';
 import { animalModel } from '../model/animal.model';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-animal-proyecto',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule,ReactiveFormsModule],
   templateUrl: './animal-proyecto.component.html',
   styleUrl: './animal-proyecto.component.css'
 })
@@ -63,7 +64,7 @@ import { animalModel } from '../model/animal.model';
         console.log(data);
         this.mostrarModal = false;
         this.animales = this.animales.filter(animal => animal.animal_id !== this.animal_id); //eliminar del array
-        this.animal_id = null;
+        // this.animal_id = null;
     });
     }else{
         this.mostrarModal = false;

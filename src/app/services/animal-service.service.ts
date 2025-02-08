@@ -25,13 +25,24 @@ export class AnimalServiceService {
     const body = { animal_id: animalId };
     return this.http.delete(`${this.baseUrl}&animal_id=${animalId}`, { headers });
   }
-  updateAnimal(updatedAnimal: animalModel): Observable<any> {
+  updateAnimal(updatedAnimal: animalModel): Observable<animalModel> {
+    console.log(updatedAnimal);
+    console.log(updatedAnimal.animal_id);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put(`${this.baseUrl}`, updatedAnimal, { headers });
+    return this.http.put<animalModel>(`${this.baseUrl}&animal_id=${updatedAnimal.animal_id}`, updatedAnimal, {headers});
   }
 
-  getItemById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}&animal_id=${id}`);
-  }
+  getItemById(id: number): Observable<animalModel> {
+  return this.http.get<animalModel>(`${this.baseUrl}&animal_id=${id}`);
+}
+
+
+getItemByTipoId(id: number): Observable<animalModel[]> {
+  if (id=3)
+    return this.http.get<animalModel[]>(`${this.baseUrl}`);
+  else
+    return this.http.get<animalModel[]>(`${this.baseUrl}&tipo_id=${id}`); 
+
+}
 }
 

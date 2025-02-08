@@ -17,6 +17,8 @@ export class AnimalAddComponent implements OnInit {
   public form!: FormGroup;
   mostrarModal: boolean = false;
   modalMensaje: string = '';
+  mostrarModalError: boolean = false;
+  modalMensajeError: string = '';
 
   tiposAnimal = [
     { id: 1, nombre: 'Perro' },
@@ -35,24 +37,23 @@ export class AnimalAddComponent implements OnInit {
   // Método para agregar un animal
   addAnimales() {
     const animal: animalModel = {
-      animal_id: 0,                   
-      foto_url: this.form.value.url,   
-      nombre: this.form.value.name,    
-      tipo_id: 1,                      
-      sexo: this.form.value.sexo,      
-      tamanio: this.form.value.tamanio, 
-      descripcion: this.form.value.description, 
-      edad: this.form.value.edad || 0,  // Edad opcional, si no la hay, pon un valor por defecto
-      fecha_ingreso: this.form.value.fecha_ingreso || new Date().toISOString().split('T')[0], // Fecha actual si no se proporciona
-      disponible: this.form.value.disponible || true,  
+      animal_id: 0,
+      foto_url: this.form.value.url,
+      nombre: this.form.value.name,
+      edad: this.form.value.edad,
+      tipo_id: this.form.value.tipo, 
+      fecha_ingreso: this.form.value.fecha_ingreso,
+      sexo: this.form.value.sexo,
+      disponible: this.form.value.disponible,
+      tamanio: this.form.value.tamanio,
+      descripcion: this.form.value.description,
     };
   
-    // Enviar la solicitud al backend
     this.AnimalServiceService.addAnimal(animal).subscribe(
       (response) => {
-        console.log('Respuesta de la API:', response);
-        this.modalMensaje = 'Animal ' + animal.nombre + ' añadido con éxito';
+        this.modalMensaje = `Animal ${animal.nombre} añadido con éxito`;
         this.mostrarModal = true;
+        this.form.reset();
       },
       (error) => {
         console.error('Error al añadir el animal', error);
@@ -63,10 +64,13 @@ export class AnimalAddComponent implements OnInit {
   }
   
   
+  
 
   // Cerrar el modal
   cerrarModal() {
     this.mostrarModal = false;
+    this.mostrarModalError = false;
+
   }
 
   // Navegar a la lista de animales
@@ -93,6 +97,11 @@ export class AnimalAddComponent implements OnInit {
       this.addAnimales();
     } else {
       console.log('Formulario no válido');
+      this.modalMensajeError = 'Por favor, completa todos los campos obligatorios.';
+      this.mostrarModalError = true;
+  
     }
   }
 }
+
+

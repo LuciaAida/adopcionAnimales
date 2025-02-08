@@ -1,4 +1,7 @@
 <div class="overflow">
+  <div class="modal-contenido" *ngIf="animales.length == 0">
+    <p>No hay animales disponibles</p>
+  </div>
   <div class="animal-grid" *ngIf="animales.length > 0">
     <div class="carta-animal" *ngFor="let animal of animales; let i = index">
       <h3>{{ animal.nombre }}</h3>

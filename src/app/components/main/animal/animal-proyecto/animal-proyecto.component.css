@@ -110,6 +110,7 @@
   }
   
   .modal-contenido {
+    text-align: center;
     background-color: #804b35; 
     margin: auto; 
     padding: 35px; /* Espacio interno */

@@ -26,7 +26,7 @@ body {
 }
 
 .formulario-animal {
-  width: 100%; /* El formulario ocupa todo el ancho */
+  width: 540px; /* El formulario ocupa todo el ancho */
   display: flex;
   flex-direction: column;
 }
@@ -56,7 +56,8 @@ body {
 }
 
 .send {
-  width: 100%; /* Botón ocupa todo el ancho del formulario */
+  display: block;
+  margin: 0 auto; /* Centra el botón horizontalmente */
   background-color: #7b2f0e;
   color: #dab897;
   border: none;
@@ -66,7 +67,9 @@ body {
   border-radius: 5px;
   text-align: center;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 200px;
 }
+
 
 .send:hover {
   background-color: #360408;

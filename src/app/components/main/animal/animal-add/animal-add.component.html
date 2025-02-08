@@ -30,7 +30,13 @@
       <button class="send" type="submit">Añadir Animal</button>  <!-- Cambié el tipo a submit -->
     </form>
   </div>
-  
+  <div class="modal" *ngIf="mostrarModalError">
+    <div class="modal-contenido">
+      <p>{{ modalMensajeError }}</p>
+      <button class="detalle-añadir" (click)="cerrarModal()">Aceptar</button>
+    </div>
+  </div>
+
   <div class="modal" *ngIf="mostrarModal">
     <div class="modal-contenido">
       <p>{{ modalMensaje }}</p>
