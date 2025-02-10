@@ -16,6 +16,8 @@ import { animalModel } from '../model/animal.model';
 })
 export class AnimalDetailComponent implements OnInit {
   title = 'Formulario';
+  mostrarModal: boolean = false;
+  modalMensaje: string = 'Animal actualizado correctamente';
   public form2!: FormGroup;
   animal: animalModel = {
     animal_id: 0,
@@ -85,10 +87,25 @@ export class AnimalDetailComponent implements OnInit {
         descripcion: this.form2.value.descripcion
       };
       this.animalService.updateAnimal(animalEdit).subscribe(response => {
+        // Mostrar modal tras actualizar el animal
         console.log(response);
-        this.animal = animalEdit
-      },
-   );
+        this.mostrarModal = true;
+        this.modalMensaje = 'Animal actualizado correctamente';
+        this.form2.reset();
+        
+        // Actualiza los datos después de la actualización
+        this.getAnimal(this.animal.animal_id);
+      }, error => {
+        this.mostrarModal = true;
+        this.modalMensaje = 'Error al actualizar el animal';
+        console.error(error);
+      });
+    }
+
+  cerrarModal() {
+    this.mostrarModal = false;
+    this.mostrarModal = false;
+
   }
 
   toggleEdit(): void {

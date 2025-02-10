@@ -2,44 +2,50 @@
   <form [formGroup]="form2" (ngSubmit)="send()">
     <div class="animal">
       <div class="animal-url">
-        <img [src]="animal!.foto_url" alt="Vista Previa de la Imagen" style="width: 40%;margin: 0 auto;text-align: center;"/>
+        <img [src]="animal!.foto_url" alt="Vista Previa de la Imagen" 
+          style="width: 40%; margin: 0 auto; text-align: center;" />
       </div>
       <div class="animal-nombre">
-        <input [value]="animal!.nombre" [disabled]="!isEditing" formControlName="nombre" />
+        <input type="text" [disabled]="!isEditing" formControlName="nombre" />
       </div>
     </div>
 
     <div class="elemento-detalles">
       <label>Tipo:</label>
-      <select [value]="animal!.tipo_id" [disabled]="!isEditing" formControlName="tipo_id">
-        <option *ngFor="let type of tiposAnimal" [value]="type.id" >{{ type.nombre }}</option>
+      <select [disabled]="!isEditing" formControlName="tipo_id">
+        <option *ngFor="let type of tiposAnimal" [value]="type.id">{{ type.nombre }}</option>
       </select>
     </div>
 
     <div class="elemento-detalles">
       <label>Sexo:</label>
-      <select [value]="animal!.sexo" [disabled]="!isEditing" formControlName="sexo">
-        <option *ngFor="let sexo of tiposSexo" [value]="sexo" >{{ sexo }}</option>
+      <select [disabled]="!isEditing" formControlName="sexo">
+        <option *ngFor="let sexo of tiposSexo" [value]="sexo">{{ sexo }}</option>
       </select>
     </div>
 
     <div class="elemento-detalles">
       <label>Tamaño:</label>
-      <select [value]="animal!.tamanio" [disabled]="!isEditing" formControlName="tamanio">
-        <option *ngFor="let tamanio of tiposTamanio" [value]="tamanio" >{{ tamanio }}</option>
+      <select [disabled]="!isEditing" formControlName="tamanio">
+        <option *ngFor="let tamanio of tiposTamanio" [value]="tamanio">{{ tamanio }}</option>
       </select>
     </div>
 
     <div class="elemento-detalles">
       <label>Descripción:</label>
-      <textarea [value]="animal!.descripcion" [disabled]="!isEditing" formControlName="descripcion"></textarea>
+      <textarea [disabled]="!isEditing" formControlName="descripcion"></textarea>
     </div>
 
     <div class="contenedor-modal">
       <button class="volver-boton" (click)="volverALaLista()">Volver a la lista</button>
-      <button type="submit"  class="editar-boton">
-       Guardar cambios
-      </button>
+      <button type="submit" class="editar-boton">Guardar cambios</button>
     </div>
   </form>
+</div>
+
+<div class="modal" *ngIf="mostrarModal">
+  <div class="modal-contenido">
+    <p>{{ modalMensaje }}</p>
+    <button class="detalle-añadir" (click)="cerrarModal()">Aceptar</button>
+  </div>
 </div>

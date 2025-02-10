@@ -26,11 +26,15 @@ export class AnimalServiceService {
     return this.http.delete(`${this.baseUrl}&animal_id=${animalId}`, { headers });
   }
   updateAnimal(updatedAnimal: animalModel): Observable<animalModel> {
-    console.log(updatedAnimal);
-    console.log(updatedAnimal.animal_id);
+    console.log("Datos enviados:", updatedAnimal);
+    console.log("ID enviado:", updatedAnimal.animal_id);
+
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<animalModel>(`${this.baseUrl}&animal_id=${updatedAnimal.animal_id}`, updatedAnimal, {headers});
-  }
+    const url = `${this.baseUrl}&id=${updatedAnimal.animal_id}`; // Agrega solo '&id='
+
+    return this.http.put<animalModel>(url, updatedAnimal, { headers });
+}
+
 
   getItemById(id: number): Observable<animalModel> {
   return this.http.get<animalModel>(`${this.baseUrl}&animal_id=${id}`);
